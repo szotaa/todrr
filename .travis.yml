@@ -25,8 +25,7 @@ script:
 - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 
 after_success:
-- docker login -u $DOCKER_USER
-- $DOCKER_PASSWORD
+- docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
 - export IMAGE_NAME=szotaa/todrr
 - docker build -t $IMAGE_NAME:$COMMIT .
