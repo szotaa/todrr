@@ -1,0 +1,39 @@
+language: java
+jdk: oraclejdk8
+
+env:
+  global:
+    - secure: "M0+hASdD8HAIh0DQTSQ11a0DSvp+r6MAwMFhejCmQgeLuwGpY4kq66wibL4Q19QhOU2aQcoxUHZ2x1vuomEvgLJQL6zzeu9+VfneUP97dVs134TflDRi0zsRcESanCaRen2qasd3NDNYc68KzYH2P/0xQeM3zfP29kEtQ+HTHCXsJIdgAXDjch+OL91KsZKAcM8Ois/W+ZGE3sh6WIIwE+aGC7jdlZ/Gj/1LgmoT8rAKARwlXV4Zvy9Odq74Jb87sHhoiwkGDVhlJuIanqZBqXWXXyQwK5wt1VyX1LJVq0jxwv9nM9t4zgKx9O7u1juQFq0a+jl+6B0C53RcqlCW34afRdFrfDQtrTYUU5K1Oa89+OpARGPKLCyI2cIvF108SxHqXG6GZUSCkJyfTl8R0h0VedoW9ei159Y1A/lzaJmf3j3o8h5GqI2wFHaFNn5XJPHDAjnyThyWyfLABb1uU0iwEO0UW/Dk01FQSn1IGNAaPWogFnFEs5pAmNajLPblAj8rysmjd78GhrDc9qJkciGVDQIFbLE2FULA4wKmtrORy1PHWwOxh4uN85u9fuKl/r+vXnMLCbMZjWe5EqZOx7no5g8nqqjYRCb4gMDGzWzVNHvunayjQ+XwLdOJDo3PGz926NU8QMZzg5Ou3AZnyDAKc6pZv68J1qaSP8wkdK8="
+    - secure: "mBHyODbsWwtklyBOIVf8X3eWjy2Q7FLhxsYgTQkCtbpaUyQmS+3SDV6nJzgxmJfs0WzG4JlchxlliTST7KYQ1zAw5kcIWSvXAj6HLi+CXkKrkZxuNje4rrxDYbAiwpHJDR0sQVlw2fWyJt9ntSuq+WaRcgIGs+o7PZaZVuq1GMBd/BH4uRMXidIFdC8XcYJsnDZs1IUhPXQpI3B62JAXGCUEqGl//PXMeLExBBT7LqyT9Im2qj6nP756LS5vq1zuwkS0lUElk4r96z52g5tHmItY6B7SAa1QjrhLmmTnurAPvIQAAg2JCF6+5g9ygn3PEBpgpGukeBEAdhSpinIKgsXXkvVQe52LEjQCqk7+IM7EW7/W1bYyEc82BU8gwluryVEYUBONAVtFfccts8HWzi+0OHAY1lOgEKoUOnPxCdG72jffTtZa495EfGqmz5n9zdKS/BJzqRs3wZHKf4TWaoy0Pqjw+/6b8V2IgjBVc1Pg/Lfj6/gVjI7dWBVYesJUqIw9Cp8Stx9s1bTOw6kQt0cwraLtFRRU3HXum7a7f+Ws2HhCl/IqNKts03zUdZ/0YmJK+5IzAzoNSqbdbgZFLZSuKI5GQZPPooEFoaCJHm0nggJPnWkMMonBp1A0IpNvDwf00m3Eq0JkPBITBiYsa9dmcpE/uFabHqKGjQiCGuM="
+    - secure: "JUDCBImk4xISLEIIBy4O+z5XlMQAFRvvE0wP/T9enNIW8LNZKe72c1/umAqCNPOaBYKILZr0NVeTM7EZnQdD1anniYRgJUfcHI1qZt46DOmNPIHhQpZU3uelEQCJRxNPYiPKqejOyBfGJv6J7AcJhdNEBGcbQ9r9bZxBD6pjRKQRb2RsUyq0v2C6UboH9tbxXIr7uwNWsfG4Vd+rHoHqea/40aqcfOJsgB/bfYzUBzamKzVirP6D9R8Q14b83TNK9bXwvr1s+hR1sbV0FpERlgXZjcWfPHZzV1wU0IkdmrTTSo9tqjkDZfjpIlyK48/njWsKpSt/yARI6gEPzrlBnjC10v+Pu1MYdUqFES02JKIWpwq5MhGIn1unYPQq4kedgfWj7V3uJ2DAvwSkY/vI5ART4ZvaTQsor+DuZKd/SFz1lKup1Cdosw6Qv9yhfrU3iWlDb4hjMyzxXpch+IvYL28ge/lAmW3lqCkLG9mhJ+nW8tXn/S0NZkqfC8HqZgpd1aY5hStYwr6JGS3vWNzEePTVJmw8oKCs+m8+2TwWMHBBNsyC5BmQugTH4MTho51ti7CmIRAFu/FROr799fkaa2bIVDMskz13r6bpdK7mppK+d6hjdH4UXRg6sO79s6JKX4+DxKSCW4w52xzzxC/bWz0V6pcqgoMcEMOEvPPXx94="
+    - secure: "gmgA5Qeb9uEjWx6RAkrid0oay9Zp5dTfapqTIa7LlcVwuoATul1NYYgI9DTQ7hlCFB+vnBcDFwZCmSdP6I8taHchkyT7CekEHe/ixTdQB58Bc+gRzkgn+fU7k9Tfx0UmQ8oZCqAbJcQbGlDD8Za+3aGH6TS8T5yRYt6L04/SK+UTjdjhbQSF8XbJ2W7D+gMFVd22egagOOccQR2BiMLwErGTcBSwux8ArQHCruy/a7s4u1NuVJGRexaHk3UItL9MNFtNW6enw3Wev9jS/8pUGxxVzc4S2eRwEh8bC7UhYdFbCZ0oZX1TjqhNksrpXZSv/x5OPRNTcxRlb2QLJxz3OuHlwLLJZPZ1yw/JXHKNcA8/6gKwxyQm88bZ8cHWd3Si//rISLahuGfDpgvkF2OzWA9FglrDbwk6aaAlYDgyhNGkTkGfeU88TgAe0o+zrw68n3nL+IeNQA+w8lZOxyjORSa0qzQmPXVMLH7YZbtTYsG/S+gwTffOTuuvRcxb09prjjuL4+O6z5n9RVuUVVMSLOyKh85A81gHZ8UBcjHPyEUj2LYPBMO/yy9A2pq2Nl/MqfZ7eqBfpxLGu1ED3UNnp31keUNju6SykfwFq/vKxi5cOA98CMiVJXZ2rEUydkhjJSKy8XifGncUXwTrdWRUFz7agP2Xsq6a5pDMNqveWCA="
+    - COMMIT=${TRAVIS_COMMIT::7}
+
+addons:
+  sonarcloud:
+    organization: "szotaa-github"
+    token:
+      secure: $SONAR_TOKEN
+
+sudo: required
+
+services:
+  - docker
+
+script:
+- ./mvnw clean install -B
+- ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+after_success:
+- docker login -u $DOCKER_USER
+- $DOCKER_PASSWORD
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
+- export IMAGE_NAME=sivaprasadreddy/freelancerkit
+- docker build -t $IMAGE_NAME:$COMMIT .
+- docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+- docker push $IMAGE_NAME
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: todrr
