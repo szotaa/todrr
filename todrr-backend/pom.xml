@@ -15,7 +15,7 @@
 		<groupId>pl.szotaa</groupId>
 		<artifactId>todrr</artifactId>
 		<version>0.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<properties>

@@ -5,16 +5,17 @@
         <groupId>pl.szotaa</groupId>
         <artifactId>todrr</artifactId>
         <version>0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
- 
+
     <groupId>pl.szotaa</groupId>
     <artifactId>todrr-frontend</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
 
     <name>todrr-frontend</name>
-	<description>todrr app frontend</description>
- 
+	  <description>todrr app frontend</description>
+
     <build>
     <resources>
       <resource>
