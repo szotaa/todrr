@@ -11,6 +11,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
+/**
+ * Entity class representing task desired to be done by user;
+ *
+ * @author szotaa
+ */
+
 @Data
 @Entity
 @Builder
