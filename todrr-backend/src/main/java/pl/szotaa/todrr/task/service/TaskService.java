@@ -11,7 +11,7 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public void add(Task task){
+    public void save(Task task){
         taskRepository.save(task);
     }
 

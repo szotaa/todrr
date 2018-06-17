@@ -23,7 +23,7 @@ public class TaskServiceTest {
     private TaskRepository taskRepository;
 
     @Test
-    public void add_repositoryGotCalled() throws Exception {
+    public void save_repositoryGotCalled() throws Exception {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -32,7 +32,7 @@ public class TaskServiceTest {
                 .build();
 
         //when
-        taskService.add(task);
+        taskService.save(task);
 
         //then
         verify(taskRepository, times(1)).save(any(Task.class));
