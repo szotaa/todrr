@@ -5,6 +5,12 @@ import org.springframework.stereotype.Service;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.repository.TaskRepository;
 
+/**
+ * Task service providing CRUD functionality for tasks.
+ *
+ * @author szotaa
+ */
+
 @Service
 @RequiredArgsConstructor
 public class TaskService {

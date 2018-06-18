@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.repository;
 
+import java.time.Instant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.szotaa.todrr.task.model.Task;
 
-import java.time.Instant;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -28,7 +28,7 @@ public class TaskRepositoryIT {
     private TaskRepository taskRepository;
 
     @Test
-    public void saveTaskEntity_creationTimestampAppended() throws Exception {
+    public void saveTaskEntity_creationTimestampAppended() {
         //given
         Task task = Task.builder()
                 .name("exampleName")
@@ -44,7 +44,7 @@ public class TaskRepositoryIT {
     }
 
     @Test
-    public void updateSavedEntity_lastModifiedTimestampValueUpdated() throws Exception {
+    public void updateSavedEntity_lastModifiedTimestampValueUpdated() {
         //given
         Task task = Task.builder()
                 .name("exampleName")

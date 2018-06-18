@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.service;
 
+import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -8,10 +9,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.repository.TaskRepository;
 
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyLong;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class TaskServiceTest {
@@ -23,7 +27,7 @@ public class TaskServiceTest {
     private TaskRepository taskRepository;
 
     @Test
-    public void save_repositoryGotCalled() throws Exception {
+    public void save_repositoryGotCalled() {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -39,7 +43,7 @@ public class TaskServiceTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void findById_incorrectId_exceptionThrown() throws Exception {
+    public void findById_incorrectId_exceptionThrown() {
         //given
         when(taskRepository.findById(anyLong())).thenReturn(Optional.empty());
 
@@ -48,7 +52,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void findById_correctId_taskReturned() throws Exception {
+    public void findById_correctId_taskReturned() {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -66,7 +70,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void delete_correctId_repositoryGotCalled() throws Exception {
+    public void delete_correctId_repositoryGotCalled() {
         //when
         taskService.delete(1L);
 
