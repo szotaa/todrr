@@ -7,11 +7,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import pl.szotaa.todrr.common.error.ErrorResponse;
 import pl.szotaa.todrr.task.exception.TaskNotFoundException;
 
+/**
+ * Rest exception handler for TaskController.
+ *
+ * @author szotaa
+ */
+
 @RestControllerAdvice
 public class TaskControllerAdvice {
 
     @ExceptionHandler(TaskNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleTaskNotFoundException(TaskNotFoundException exception){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(404, exception.getMessage(), ""));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(404, exception.getMessage(), "")); //TODO: add info
     }
 }
