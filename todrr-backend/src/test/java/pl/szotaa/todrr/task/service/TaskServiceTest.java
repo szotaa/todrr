@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.szotaa.todrr.task.exception.TaskNotFoundException;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.repository.TaskRepository;
 
@@ -42,7 +43,7 @@ public class TaskServiceTest {
         verify(taskRepository, times(1)).save(any(Task.class));
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = TaskNotFoundException.class)
     public void findById_incorrectId_exceptionThrown() {
         //given
         when(taskRepository.findById(anyLong())).thenReturn(Optional.empty());

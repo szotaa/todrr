@@ -2,6 +2,7 @@ package pl.szotaa.todrr.task.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.szotaa.todrr.task.exception.TaskNotFoundException;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.repository.TaskRepository;
 
@@ -22,7 +23,7 @@ public class TaskService {
     }
 
     public Task findById(long id){
-        return taskRepository.findById(id).orElseThrow(RuntimeException::new);
+        return taskRepository.findById(id).<TaskNotFoundException>orElseThrow(() -> {throw new TaskNotFoundException(id);});
     }
 
     public void update(long id, Task updated){
