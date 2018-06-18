@@ -23,7 +23,7 @@ public class TaskService {
     }
 
     public Task findById(long id){
-        return taskRepository.findById(id).<TaskNotFoundException>orElseThrow(() -> {throw new TaskNotFoundException(id);});
+        return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
     }
 
     public void update(long id, Task updated){
