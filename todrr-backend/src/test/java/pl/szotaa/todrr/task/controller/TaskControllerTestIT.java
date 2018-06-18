@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.service.TaskService;
 
-
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.times;
