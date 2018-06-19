@@ -62,7 +62,7 @@ public class TaskJsonIT {
         Task task = jacksonTester.parseObject(jsonTask);
 
         //then
-        assertEquals(1L, task.getId());
+        assertEquals(1L, task.getId(), 0);
         assertNotNull(task.getName());
         assertNotNull(task.getDescription());
         assertNotNull(task.getCreationTimestamp());

@@ -22,15 +22,15 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-    public Task findById(long id){
+    public Task findById(Long id){
         return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
     }
 
-    public void update(long id, Task updated){
+    public void update(Long id, Task updated){
         //TODO: implement update
     }
 
-    public void delete(long id){
+    public void delete(Long id){
         taskRepository.deleteById(id);
     }
 }
