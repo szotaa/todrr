@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Setter
 @Entity
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
 public class User implements Serializable, UserDetails {
@@ -91,12 +93,12 @@ public class User implements Serializable, UserDetails {
         }
 
         User user = (User) obj;
-        return this.username.equalsIgnoreCase(user.getUsername());
+        return this.username.equals(user.getUsername());
     }
 
     @Override
     public int hashCode() {
-        int result = this.username.toLowerCase().hashCode();
+        int result = this.username.hashCode();
         result *= 31;
         return result;
     }

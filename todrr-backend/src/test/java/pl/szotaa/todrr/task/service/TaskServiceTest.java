@@ -71,6 +71,22 @@ public class TaskServiceTest {
     }
 
     @Test
+    public void update_repositoryGotCalled(){
+        //given
+        Task task = Task.builder()
+                .id(1L)
+                .name("exampleName")
+                .description("exampleDescription")
+                .build();
+
+        //when
+        taskService.update(1L, task);
+
+        //then
+        verify(taskRepository, times(1)).save(any(Task.class));
+    }
+
+    @Test
     public void delete_correctId_repositoryGotCalled() throws Exception {
         //when
         taskService.delete(1L);
