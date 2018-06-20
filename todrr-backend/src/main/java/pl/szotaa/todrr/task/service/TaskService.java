@@ -27,7 +27,8 @@ public class TaskService {
     }
 
     public void update(Long id, Task updated){
-        //TODO: implement update
+        updated.setId(id);
+        taskRepository.save(updated);
     }
 
     public void delete(Long id){
