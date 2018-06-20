@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Task with specified id can not be found.")
-public class TaskNotFoundException extends RuntimeException {
+public class TaskNotFoundException extends Exception {
 }

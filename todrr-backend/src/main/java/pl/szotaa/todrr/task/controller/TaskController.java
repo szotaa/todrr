@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import pl.szotaa.todrr.task.exception.TaskNotFoundException;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.service.TaskService;
 
@@ -36,7 +37,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> findById(@PathVariable long id){
+    public ResponseEntity<Task> findById(@PathVariable long id) throws TaskNotFoundException {
         return ResponseEntity.ok(taskService.findById(id));
     }
 

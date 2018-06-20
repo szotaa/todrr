@@ -28,7 +28,7 @@ public class TaskServiceTest {
     private TaskRepository taskRepository;
 
     @Test
-    public void save_repositoryGotCalled() {
+    public void save_repositoryGotCalled() throws Exception {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -44,7 +44,7 @@ public class TaskServiceTest {
     }
 
     @Test(expected = TaskNotFoundException.class)
-    public void findById_incorrectId_exceptionThrown() {
+    public void findById_incorrectId_exceptionThrown() throws Exception {
         //given
         when(taskRepository.findById(anyLong())).thenReturn(Optional.empty());
 
@@ -53,7 +53,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void findById_correctId_taskReturned() {
+    public void findById_correctId_taskReturned() throws Exception {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -71,7 +71,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void delete_correctId_repositoryGotCalled() {
+    public void delete_correctId_repositoryGotCalled() throws Exception {
         //when
         taskService.delete(1L);
 

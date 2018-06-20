@@ -22,7 +22,7 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-    public Task findById(Long id){
+    public Task findById(Long id) throws TaskNotFoundException {
         return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
     }
 
