@@ -1,5 +1,5 @@
 /**
- * Task related exceptions
+ * Task related exceptions.
  */
 
 package pl.szotaa.todrr.task.exception;

@@ -1,5 +1,5 @@
 /**
- * Task related rest controller.
+ * Task related rest controllers.
  */
 
 package pl.szotaa.todrr.task.controller;

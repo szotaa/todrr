@@ -16,6 +16,12 @@ import pl.szotaa.todrr.user.service.UserService;
 @RequestMapping("/api/user")
 public class UserController {
 
+    /**
+     * Rest controller resolving various User related requests.
+     *
+     * @author szotaa
+     */
+
     private final UserService userService;
 
     @PostMapping

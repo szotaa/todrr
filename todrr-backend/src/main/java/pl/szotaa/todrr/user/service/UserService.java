@@ -11,6 +11,13 @@ import pl.szotaa.todrr.user.model.Role;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.repository.UserRepository;
 
+/**
+ * Task service providing CRUD functionality for User entity. Implements UserDetailsService for integration with
+ * Spring Security.
+ *
+ * @author szotaa
+ */
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
