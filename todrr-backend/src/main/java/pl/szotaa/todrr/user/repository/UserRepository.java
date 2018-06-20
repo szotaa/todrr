@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.user.repository;
 
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.szotaa.todrr.user.model.User;
 
@@ -10,4 +11,6 @@ import pl.szotaa.todrr.user.model.User;
  */
 
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findByUsername(String username);
 }
