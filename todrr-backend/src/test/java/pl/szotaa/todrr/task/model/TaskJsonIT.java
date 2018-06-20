@@ -50,12 +50,12 @@ public class TaskJsonIT {
     @Test
     public void deserialize_allFieldsProvided_jsonProperlyDeserialized() throws Exception {
         //given
-        String jsonTask = "{\n" +
-                "  \"id\": \"1\",\n" +
-                "  \"name\": \"name\",\n" +
-                "  \"description\": \"description\",\n" +
-                "  \"creationTimestamp\": \"11111\",\n" +
-                "  \"lastModified\": \"111111\"\n" +
+        String jsonTask = "{" +
+                "  \"id\": \"1\"," +
+                "  \"name\": \"name\"," +
+                "  \"description\": \"description\"," +
+                "  \"creationTimestamp\": \"11111\"," +
+                "  \"lastModified\": \"111111\"" +
                 "}";
 
         //when
