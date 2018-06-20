@@ -2,6 +2,7 @@ package pl.szotaa.todrr.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
+    @PreAuthorize("permitAll()")
     public ResponseEntity<Void> add(@RequestBody User user) throws UsernameTakenException {
         userService.save(user);
         return ResponseEntity.ok().build();

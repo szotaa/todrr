@@ -22,6 +22,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameTakenException();
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setIsEnabled(true);
         userRepository.save(user);
     }
 

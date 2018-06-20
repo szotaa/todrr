@@ -9,16 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import pl.szotaa.todrr.task.model.Task;
 import pl.szotaa.todrr.task.service.TaskService;
+
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -41,6 +44,7 @@ public class TaskControllerTestIT {
     private TaskService taskService;
 
     @Test
+    @WithMockUser
     public void save_201created() throws Exception {
         //given
         Task task = Task.builder()
@@ -51,13 +55,15 @@ public class TaskControllerTestIT {
         //when&then
         mockMvc.perform(post("/api/task")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(asJsonString(task)))
+            .content(asJsonString(task))
+            .with(csrf()))
                 .andExpect(status().isCreated());
 
         verify(taskService, times(1)).save(any(Task.class));
     }
 
     @Test
+    @WithMockUser
     public void findById_200ok() throws Exception {
         //given
         Task task = Task.builder()
@@ -78,6 +84,7 @@ public class TaskControllerTestIT {
     }
 
     @Test
+    @WithMockUser
     public void update_200ok() throws Exception {
         //given
         Task task = Task.builder()
@@ -88,16 +95,19 @@ public class TaskControllerTestIT {
         //when&then
         mockMvc.perform(put("/api/task/{id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(task)))
-                .andExpect(status().isOk());
+                .content(asJsonString(task))
+                .with(csrf()))
+                    .andExpect(status().isOk());
 
         verify(taskService, times(1)).update(anyLong(), any(Task.class));
     }
 
     @Test
+    @WithMockUser
     public void delete_200ok() throws Exception {
-        mockMvc.perform(delete("/api/task/{id}", 1L))
-                .andExpect(status().isOk());
+        mockMvc.perform(delete("/api/task/{id}", 1L)
+                .with(csrf()))
+                    .andExpect(status().isOk());
 
         verify(taskService, times(1)).delete(anyLong());
     }
