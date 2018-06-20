@@ -3,6 +3,7 @@ package pl.szotaa.todrr.user.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -38,6 +39,7 @@ public class User implements Serializable, UserDetails {
 
     @NotEmpty
     @Size(min = 5)
+    @Column(unique = true)
     private String username;
 
     @NotEmpty
