@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.szotaa.todrr.security.util.JwtTokenUtil;
 import pl.szotaa.todrr.user.model.User;
 
+/**
+ * Rest authentication endpoint.
+ *
+ * @author szotaa
+ */
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")

@@ -1,6 +1,5 @@
 package pl.szotaa.todrr.security.util;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
@@ -9,14 +8,34 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import pl.szotaa.todrr.user.model.User;
 
+/**
+ * Utility class for managing JWT tokens.
+ *
+ * @author szotaa
+ */
+
 @Component
 public class JwtTokenUtil {
+
+    /**
+     * Token expiration time expressed in milliseconds.
+     */
 
     @Value("${jwt.expiration}")
     private long expirationTimeMs;
 
+    /**
+     * Secret used for signing JWT tokens.
+     */
+
     @Value("${jwt.secret}")
     private String jwtSecret;
+
+    /**
+     * Generates JWT token for user specified in Authentication object.
+     * @param auth Spring's Security Authentication object.
+     * @return Signed JWT token.
+     */
 
     public String getToken(Authentication auth){
         User user = (User) auth.getPrincipal();
@@ -29,6 +48,12 @@ public class JwtTokenUtil {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
+
+    /**
+     * Decrypts username from JWT token.
+     * @param token JWT token.
+     * @return Username.
+     */
 
     public String getUsernameFromJwt(String token){
         return Jwts.parser()

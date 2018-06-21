@@ -15,6 +15,12 @@ import pl.szotaa.todrr.security.util.JwtTokenUtil;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.service.UserService;
 
+/**
+ * Seeks for JWT token in every request. If present, validates it and if successful sets the Authentication object.
+ *
+ * @author szotaa
+ */
+
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -34,6 +40,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
+
+    /**
+     * Helper method for retrieving (if available) JWT token in usable form from request's header.
+     * @param request HTTP request possibly containing JWT token.
+     * @return JWT token.
+     */
 
     private String getJwtTokenFromRequest(HttpServletRequest request){
         String bearer = request.getHeader("Authorization");
