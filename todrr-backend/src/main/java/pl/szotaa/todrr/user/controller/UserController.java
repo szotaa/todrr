@@ -11,16 +11,16 @@ import pl.szotaa.todrr.user.exception.UsernameTakenException;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.service.UserService;
 
+/**
+ * Rest controller resolving various User related requests.
+ *
+ * @author szotaa
+ */
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
 public class UserController {
-
-    /**
-     * Rest controller resolving various User related requests.
-     *
-     * @author szotaa
-     */
 
     private final UserService userService;
 
