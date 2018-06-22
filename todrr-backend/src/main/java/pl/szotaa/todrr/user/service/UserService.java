@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     public void save(User user) throws UsernameTakenException {
-        if(userRepository.existsByUsername(user.getUsername())){
+        if(userRepository.existsByEmail(user.getEmail())){
             throw new UsernameTakenException();
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -37,6 +37,6 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).<UsernameNotFoundException>orElseThrow(() -> {throw new UsernameNotFoundException(username);});
+        return userRepository.findByEmail(username).<UsernameNotFoundException>orElseThrow(() -> {throw new UsernameNotFoundException(username);});
     }
 }

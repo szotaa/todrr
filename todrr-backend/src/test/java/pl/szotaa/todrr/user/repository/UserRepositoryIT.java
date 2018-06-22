@@ -28,10 +28,10 @@ public class UserRepositoryIT {
     private UserRepository userRepository;
 
     @Test
-    public void findByUsername_usernameExistent_correctUserReturned() throws Exception {
+    public void findByEmail_emailExistent_correctUserReturned() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -40,26 +40,26 @@ public class UserRepositoryIT {
         entityManager.persistAndFlush(user);
 
         //when
-        User foundUser = userRepository.findByUsername("username").get();
+        User foundUser = userRepository.findByEmail("email@email.com").get();
 
         //then
         assertEquals(user, foundUser);
     }
 
     @Test
-    public void findByUsername_usernameNonExistent_emptyOptionalReturned() throws Exception {
+    public void findByEmail_emailNonExistent_emptyOptionalReturned() throws Exception {
         //when
-        Optional<User> foundUserOptional = userRepository.findByUsername("username");
+        Optional<User> foundUserOptional = userRepository.findByEmail("email@email.com");
 
         //then
         assertFalse(foundUserOptional.isPresent());
     }
 
     @Test
-    public void existsByUsername_usernameExistent_trueReturned() throws Exception {
+    public void existsByEmail_emailExistent_trueReturned() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -68,11 +68,11 @@ public class UserRepositoryIT {
         entityManager.persistAndFlush(user);
 
         //when&then
-        assertTrue(userRepository.existsByUsername("username"));
+        assertTrue(userRepository.existsByEmail("email@email.com"));
     }
 
     @Test
-    public void existsByUsername_usernameNonExistent_falseReturned() throws Exception {
-        assertFalse(userRepository.existsByUsername("username"));
+    public void existsByEmail_emailNonExistent_falseReturned() throws Exception {
+        assertFalse(userRepository.existsByEmail("email@email.com"));
     }
 }

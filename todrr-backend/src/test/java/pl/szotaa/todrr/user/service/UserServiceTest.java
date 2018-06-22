@@ -40,13 +40,13 @@ public class UserServiceTest {
     public void save_newValidUser_userSaved() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
-        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByEmail(anyString())).thenReturn(false);
         when(passwordEncoder.encode(anyString())).thenReturn("encryptedPassword");
 
         //when
@@ -61,13 +61,13 @@ public class UserServiceTest {
     public void save_newValidUser_passwordGetsEncrypted() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
-        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByEmail(anyString())).thenReturn(false);
         when(passwordEncoder.encode(anyString())).thenReturn("encryptedPassword");
 
         //when
@@ -86,13 +86,13 @@ public class UserServiceTest {
     public void save_existingValidUser_exceptionThrown() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
-        when(userRepository.existsByUsername(anyString())).thenReturn(true);
+        when(userRepository.existsByEmail(anyString())).thenReturn(true);
 
         //when&then
         userService.save(user);
@@ -102,26 +102,26 @@ public class UserServiceTest {
     public void loadUserByUsername_usernameExisting_userReturned() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
-        when(userRepository.findByUsername(anyString())).thenReturn(Optional.of(user));
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.of(user));
 
         //when
         User loaded = (User) userService.loadUserByUsername("username");
 
         //then
         assertEquals(user, loaded);
-        verify(userRepository, times(1)).findByUsername(anyString());
+        verify(userRepository, times(1)).findByEmail(anyString());
     }
 
     @Test(expected = UsernameNotFoundException.class)
     public void loadUserByUsername_usernameNotExisting_exceptionThrown() throws Exception {
         //given
-        when(userRepository.findByUsername(anyString())).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
         //when&then
         userService.loadUserByUsername("username");

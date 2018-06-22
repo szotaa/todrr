@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,10 +42,15 @@ public class User implements Serializable, UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    /**
+     * Email is also an username.
+     */
+
+    @Email
     @NotEmpty
     @Size(min = 5)
     @Column(unique = true)
-    private String username;
+    private String email;
 
     @NotEmpty
     @Size(min = 8)
@@ -83,6 +89,11 @@ public class User implements Serializable, UserDetails {
     }
 
     @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if(obj == this){
             return true;
@@ -93,12 +104,12 @@ public class User implements Serializable, UserDetails {
         }
 
         User user = (User) obj;
-        return this.username.equals(user.getUsername());
+        return this.email.equals(user.getEmail());
     }
 
     @Override
     public int hashCode() {
-        int result = this.username.hashCode();
+        int result = this.email.hashCode();
         result *= 31;
         return result;
     }

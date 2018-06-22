@@ -36,7 +36,7 @@ public class UserControllerIT {
     public void add_validUser_userServiceGetsCalled() throws Exception {
         //given
         String userJson = "{\n" +
-                "\"username\": \"username\"," +
+                "\"email\": \"email@email.com\"," +
                 "\"password\": \"password\"" +
                 "}";
 

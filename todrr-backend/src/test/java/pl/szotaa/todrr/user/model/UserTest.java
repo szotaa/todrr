@@ -14,14 +14,14 @@ public class UserTest {
     public void equals_equalUsers_trueReturned() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User equalUser = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -35,14 +35,14 @@ public class UserTest {
     public void equals_notEqualUsers_falseReturned() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User user2 = User.builder()
-                .username("username2")
+                .email("email2@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -56,7 +56,7 @@ public class UserTest {
     public void equals_methodIsReflexive() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -70,14 +70,14 @@ public class UserTest {
     public void equals_methodIsSymmetric() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User equalUser = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -91,21 +91,21 @@ public class UserTest {
     public void equals_methodIsTransitive() throws Exception {
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User equalUser = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User equalUser2 = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -121,14 +121,14 @@ public class UserTest {
     public void hashCode_equalUsersHaveEqualHashcodes(){
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User equalUser = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
@@ -142,14 +142,14 @@ public class UserTest {
     public void hashCode_notEqualUsersDontHaveEqualHashcodes(){
         //given
         User user = User.builder()
-                .username("username")
+                .email("email@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
                 .build();
 
         User user2 = User.builder()
-                .username("username2")
+                .email("email2@email.com")
                 .password("password")
                 .role(Role.ROLE_USER)
                 .isEnabled(true)
