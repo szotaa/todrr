@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.user.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
@@ -40,6 +41,7 @@ public class User implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     /**
@@ -54,14 +56,20 @@ public class User implements Serializable, UserDetails {
 
     @NotEmpty
     @Size(min = 8)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Role role;
 
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Boolean isEnabled;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private String emailConfirmationToken;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

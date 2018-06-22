@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.user.service;
 
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,19 +25,27 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmailActivationService emailActivationService;
 
     public void save(User user) throws UsernameTakenException {
         if(userRepository.existsByEmail(user.getEmail())){
             throw new UsernameTakenException();
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setIsEnabled(true);
+        user.setIsEnabled(false);
         user.setRole(Role.ROLE_USER);
-        userRepository.save(user);
+        String emailConfirmationToken = generateEmailConfirmationToken();
+        user.setEmailConfirmationToken(emailConfirmationToken);
+        userRepository.saveAndFlush(user);
+        emailActivationService.sendConfirmationEmail(user.getId() ,user.getEmail(), emailConfirmationToken);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username).<UsernameNotFoundException>orElseThrow(() -> {throw new UsernameNotFoundException(username);});
+    }
+
+    private String generateEmailConfirmationToken(){
+        return UUID.randomUUID().toString();
     }
 }
