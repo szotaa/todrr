@@ -47,6 +47,7 @@ public class MockDataDatabasePopulater {
         User disabledUser = User.builder()
                 .email("disabled@email.com")
                 .password(passwordEncoder.encode("password"))
+                .emailActivationToken("token")
                 .isEnabled(false)
                 .role(Role.ROLE_USER)
                 .build();
