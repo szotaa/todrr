@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.user.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Collection;
@@ -68,8 +69,8 @@ public class User implements Serializable, UserDetails {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Boolean isEnabled;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private String emailConfirmationToken;
+    @JsonIgnore
+    private String emailActivationToken;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

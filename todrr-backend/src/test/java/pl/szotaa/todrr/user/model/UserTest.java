@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 public class UserTest {
 
     @Test
-    public void equals_equalUsers_trueReturned() throws Exception {
+    public void equals_equalUsers_trueReturned(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -32,7 +32,7 @@ public class UserTest {
     }
 
     @Test
-    public void equals_notEqualUsers_falseReturned() throws Exception {
+    public void equals_notEqualUsers_falseReturned(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -53,7 +53,7 @@ public class UserTest {
     }
 
     @Test
-    public void equals_methodIsReflexive() throws Exception {
+    public void equals_methodIsReflexive(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -67,7 +67,7 @@ public class UserTest {
     }
 
     @Test
-    public void equals_methodIsSymmetric() throws Exception {
+    public void equals_methodIsSymmetric(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -88,7 +88,7 @@ public class UserTest {
     }
 
     @Test
-    public void equals_methodIsTransitive() throws Exception {
+    public void equals_methodIsTransitive(){
         //given
         User user = User.builder()
                 .email("email@email.com")

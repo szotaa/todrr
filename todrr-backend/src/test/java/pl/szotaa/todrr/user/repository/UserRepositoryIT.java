@@ -28,7 +28,7 @@ public class UserRepositoryIT {
     private UserRepository userRepository;
 
     @Test
-    public void findByEmail_emailExistent_correctUserReturned() throws Exception {
+    public void findByEmail_emailExistent_correctUserReturned() {
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -47,7 +47,7 @@ public class UserRepositoryIT {
     }
 
     @Test
-    public void findByEmail_emailNonExistent_emptyOptionalReturned() throws Exception {
+    public void findByEmail_emailNonExistent_emptyOptionalReturned(){
         //when
         Optional<User> foundUserOptional = userRepository.findByEmail("email@email.com");
 
@@ -56,7 +56,7 @@ public class UserRepositoryIT {
     }
 
     @Test
-    public void existsByEmail_emailExistent_trueReturned() throws Exception {
+    public void existsByEmail_emailExistent_trueReturned(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -72,7 +72,7 @@ public class UserRepositoryIT {
     }
 
     @Test
-    public void existsByEmail_emailNonExistent_falseReturned() throws Exception {
+    public void existsByEmail_emailNonExistent_falseReturned(){
         assertFalse(userRepository.existsByEmail("email@email.com"));
     }
 }

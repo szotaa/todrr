@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class RoleTest {
 
     @Test
-    public void getAuthority_roleNameReturned() throws Exception {
+    public void getAuthority_roleNameReturned(){
         //given
         Role userRole = Role.ROLE_USER;
         Role adminRole = Role.ROLE_ADMIN;

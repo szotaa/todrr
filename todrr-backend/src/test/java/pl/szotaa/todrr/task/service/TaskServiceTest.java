@@ -28,7 +28,7 @@ public class TaskServiceTest {
     private TaskRepository taskRepository;
 
     @Test
-    public void save_repositoryGotCalled() throws Exception {
+    public void save_repositoryGotCalled() {
         //given
         Task task = Task.builder()
                 .id(1L)
@@ -87,7 +87,7 @@ public class TaskServiceTest {
     }
 
     @Test
-    public void delete_correctId_repositoryGotCalled() throws Exception {
+    public void delete_correctId_repositoryGotCalled() {
         //when
         taskService.delete(1L);
 

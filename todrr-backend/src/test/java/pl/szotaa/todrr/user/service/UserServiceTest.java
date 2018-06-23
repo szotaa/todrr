@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.szotaa.todrr.mail.service.EmailActivationService;
 import pl.szotaa.todrr.user.exception.UsernameTakenException;
 import pl.szotaa.todrr.user.model.Role;
 import pl.szotaa.todrr.user.model.User;
@@ -102,7 +103,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void loadUserByUsername_usernameExisting_userReturned() throws Exception {
+    public void loadUserByUsername_usernameExisting_userReturned(){
         //given
         User user = User.builder()
                 .email("email@email.com")
@@ -122,7 +123,7 @@ public class UserServiceTest {
     }
 
     @Test(expected = UsernameNotFoundException.class)
-    public void loadUserByUsername_usernameNotExisting_exceptionThrown() throws Exception {
+    public void loadUserByUsername_usernameNotExisting_exceptionThrown(){
         //given
         when(userRepository.findByEmail(anyString())).thenReturn(Optional.empty());
 
