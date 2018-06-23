@@ -17,6 +17,12 @@ import pl.szotaa.todrr.user.exception.UserNotFoundException;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.repository.UserRepository;
 
+/**
+ * Service which sends account activation links via email and later verifies them.
+ *
+ * @author szotaa
+ */
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -40,7 +46,7 @@ public class EmailActivationService {
         mailSender.send(activationEmail);
     }
 
-    public void confirmEmail(Long userId, String activationToken) throws UserNotFoundException, InvalidEmailConfirmationTokenException {
+    public void activateAccount(Long userId, String activationToken) throws UserNotFoundException, InvalidEmailConfirmationTokenException {
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         if(user.getEmailActivationToken().equalsIgnoreCase(activationToken)){
             user.setIsEnabled(true);
@@ -58,7 +64,7 @@ public class EmailActivationService {
     private String getActivationUrl(Long id, String token){
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
-        return String.format("%s://%s:%d/api/user/confirm/%d/%s",
+        return String.format("%s://%s:%d/api/activate/%d/%s",
                 request.getScheme(),
                 request.getServerName(),
                 request.getServerPort(),
