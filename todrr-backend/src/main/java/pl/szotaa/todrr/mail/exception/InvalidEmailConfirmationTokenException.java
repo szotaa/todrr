@@ -1,4 +1,4 @@
-package pl.szotaa.todrr.user.exception;
+package pl.szotaa.todrr.mail.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
