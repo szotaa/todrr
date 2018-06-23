@@ -1,4 +1,4 @@
-package pl.szotaa.todrr.security.controller;
+package pl.szotaa.todrr.auth.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import pl.szotaa.todrr.security.util.JwtTokenUtil;
+import pl.szotaa.todrr.auth.util.JwtTokenUtil;
 
 
 import static org.mockito.Mockito.any;

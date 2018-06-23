@@ -2,4 +2,4 @@
  * Security related utility classes.
  */
 
-package pl.szotaa.todrr.security.util;
+package pl.szotaa.todrr.auth.util;

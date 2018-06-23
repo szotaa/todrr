@@ -1,4 +1,4 @@
-package pl.szotaa.todrr.security.filter;
+package pl.szotaa.todrr.auth.filter;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;
@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import pl.szotaa.todrr.security.util.JwtTokenUtil;
+import pl.szotaa.todrr.auth.util.JwtTokenUtil;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.service.UserService;
 

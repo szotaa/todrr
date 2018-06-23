@@ -1,4 +1,4 @@
-package pl.szotaa.todrr.security.util;
+package pl.szotaa.todrr.auth.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
