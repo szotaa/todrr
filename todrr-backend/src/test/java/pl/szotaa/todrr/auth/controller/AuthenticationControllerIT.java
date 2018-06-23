@@ -7,12 +7,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import pl.szotaa.todrr.auth.service.AuthenticationService;
 import pl.szotaa.todrr.auth.util.JwtTokenUtil;
+import pl.szotaa.todrr.user.model.User;
 
 
 import static org.mockito.Mockito.any;
@@ -32,17 +35,16 @@ public class AuthenticationControllerIT {
     private MockMvc mockMvc;
 
     @MockBean
-    private JwtTokenUtil jwtTokenUtil;
+    private AuthenticationService authenticationService;
 
     @MockBean
-    private AuthenticationManager authenticationManager;
+    private JavaMailSender javaMailSender;
 
     @Test
     public void attemptLoggingIn_logInSuccessful_jwtTokenReturned() throws Exception {
         //given
         String userJson = "{\"username\": \"exampleUsername\", \"password\":\"examplePassword\"}";
-        when(authenticationManager.authenticate(any())).thenReturn(new UsernamePasswordAuthenticationToken(null, null, null));
-        when(jwtTokenUtil.getToken(any(Authentication.class))).thenReturn("jwtToken");
+        when(authenticationService.getAuthenticatedJwtToken(any(User.class))).thenReturn("jwtToken");
 
         //when&then
         mockMvc.perform(post("/api/auth/login")
@@ -52,7 +54,6 @@ public class AuthenticationControllerIT {
                 .andExpect(content().contentType("text/plain;charset=UTF-8"))
                 .andExpect(content().string("jwtToken"));
 
-        verify(authenticationManager, times(1)).authenticate(any(Authentication.class));
-        verify(jwtTokenUtil, times(1)).getToken(any(Authentication.class));
+        verify(authenticationService, times(1)).getAuthenticatedJwtToken(any(User.class));
     }
 }

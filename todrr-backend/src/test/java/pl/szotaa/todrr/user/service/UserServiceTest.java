@@ -34,6 +34,9 @@ public class UserServiceTest {
     @Mock
     private PasswordEncoder passwordEncoder;
 
+    @Mock
+    private EmailActivationService emailActivationService;
+
     ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
 
     @Test
@@ -53,7 +56,7 @@ public class UserServiceTest {
         userService.save(user);
 
         //then
-        verify(userRepository, times(1)).save(userCaptor.capture());
+        verify(userRepository, times(1)).saveAndFlush(userCaptor.capture());
         assertEquals(user, userCaptor.getValue());
     }
 
@@ -74,7 +77,7 @@ public class UserServiceTest {
         userService.save(user);
 
         //then
-        verify(userRepository, times(1)).save(userCaptor.capture());
+        verify(userRepository, times(1)).saveAndFlush(userCaptor.capture());
         verify(passwordEncoder, times(1)).encode(anyString());
         User capturedUser = userCaptor.getValue();
         assertNotEquals("password", capturedUser.getPassword());
