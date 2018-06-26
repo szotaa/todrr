@@ -1,9 +1,12 @@
 package pl.szotaa.todrr.task.controller;
 
 import java.net.URI;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +39,12 @@ public class TaskController {
         taskService.save(task);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(task.getId()).toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Task>> getAllAccessibleTasks() {
+        List<Task> tasks = taskService.findAllByCurrentlyAuthenticatedUser();
+        return ResponseEntity.ok(tasks);
     }
 
     @GetMapping("/{id}")

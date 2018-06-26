@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +29,11 @@ public class TaskService {
 
     public Task findById(Long id) throws TaskNotFoundException {
         return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
+    }
+
+    public List<Task> findAllByCurrentlyAuthenticatedUser(){
+        User user = getOwnerFromSecurityContext();
+        return taskRepository.findAllByOwnerId(user.getId());
     }
 
     public void update(Long id, Task updated){
