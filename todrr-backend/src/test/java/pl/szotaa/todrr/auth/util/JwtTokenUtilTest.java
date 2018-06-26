@@ -23,7 +23,7 @@ public class JwtTokenUtilTest {
 
     @Before
     public void init(){
-        ReflectionTestUtils.setField(jwtTokenUtil, "expirationTimeMs", 3600000);
+        ReflectionTestUtils.setField(jwtTokenUtil, "expirationTimeMs", 3155692597470L);
         ReflectionTestUtils.setField(jwtTokenUtil, "jwtSecret", "secret");
     }
 
@@ -78,7 +78,7 @@ public class JwtTokenUtilTest {
     @Test
     public void getUsernameFromJwt_usernameRetrieved(){
         //given
-        String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTUyOTc2MTM3OSwiZXhwIjoxNTI5NzY0OTc5fQ.REE6sd5m6hUScqiD6GIFlQr3CqoMYwAChqAqcJi77yaulRq0sBzDDqPoiYfh_AVT7ygMGWobWzc4RrhdA2wLKg";
+        String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGVtYWlsLmNvbSIsImlhdCI6MTUzMDAxOTI5OCwiZXhwIjo0Njg1NzExODk1fQ.ePxwbTfnWDAicoleMGdOHBdeu3j_BP9VwwOnm7MRvQ1bwteilpbZzRQedb2e5We_TlUm4d06ZK6wkrI36wu-hQ";
 
         //when
         String username = jwtTokenUtil.getUsernameFromJwt(token);
