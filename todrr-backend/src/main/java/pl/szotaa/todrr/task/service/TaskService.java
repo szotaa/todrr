@@ -47,6 +47,9 @@ public class TaskService {
 
     private User getOwnerFromSecurityContext(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return (User) authentication.getPrincipal();
+        if(authentication != null){
+            return (User) authentication.getPrincipal();
+        }
+        return null;
     }
 }
