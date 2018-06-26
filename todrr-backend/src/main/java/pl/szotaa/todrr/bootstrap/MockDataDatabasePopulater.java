@@ -1,10 +1,13 @@
 package pl.szotaa.todrr.bootstrap;
 
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import pl.szotaa.todrr.task.model.Task;
+import pl.szotaa.todrr.task.repository.TaskRepository;
 import pl.szotaa.todrr.user.model.Role;
 import pl.szotaa.todrr.user.model.User;
 import pl.szotaa.todrr.user.repository.UserRepository;
@@ -21,15 +24,11 @@ import pl.szotaa.todrr.user.repository.UserRepository;
 public class MockDataDatabasePopulater {
 
     private final UserRepository userRepository;
+    private final TaskRepository taskRepository;
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * Populates user table with mock users so there is no need to go through registration process
-     * every time you need to test something requiring authentication.
-     */
-
     @PostConstruct
-    public void putMockUserAccounts() {
+    public void persistMockData() {
         User admin = User.builder()
                 .email("admin@email.com")
                 .password(passwordEncoder.encode("password"))
@@ -52,9 +51,26 @@ public class MockDataDatabasePopulater {
                 .role(Role.ROLE_USER)
                 .build();
 
-        userRepository.save(admin);
-        userRepository.save(user);
-        userRepository.save(disabledUser);
+        Task task1 = Task.builder()
+                .name("task1Name")
+                .description("task1Desc")
+                .owner(user)
+                .build();
+
+        Task task2 = Task.builder()
+                .name("task2Name")
+                .description("task2Desc")
+                .owner(user)
+                .build();
+
+        Task task3 = Task.builder()
+                .name("task3Name")
+                .description("task3Desc")
+                .owner(user)
+                .build();
+
+        userRepository.saveAll(Arrays.asList(user, admin, disabledUser));
+        taskRepository.saveAll(Arrays.asList(task1, task2, task3));
         userRepository.flush();
     }
 }
