@@ -1,10 +1,8 @@
 package pl.szotaa.todrr.task.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -54,7 +52,7 @@ public class TaskControllerTestIT {
         //when&then
         mockMvc.perform(post("/api/task")
             .contentType(MediaType.APPLICATION_JSON)
-            .content(asJsonString(task))
+            .content("{\"name\":\"name\",\"description\": \"description\"}")
             .with(csrf()))
                 .andExpect(status().isCreated());
 
@@ -84,6 +82,16 @@ public class TaskControllerTestIT {
 
     @Test
     @WithMockUser
+    public void getAllAccessibleTasks_200ok() throws Exception {
+        //when&then
+        mockMvc.perform(get("/api/task"))
+                .andExpect(status().isOk());
+
+        verify(taskService, times(1)).findAllByCurrentlyAuthenticatedUser();
+    }
+
+    @Test
+    @WithMockUser
     public void update_200ok() throws Exception {
         //given
         Task task = Task.builder()
@@ -94,7 +102,7 @@ public class TaskControllerTestIT {
         //when&then
         mockMvc.perform(put("/api/task/{id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(task))
+                .content("{\"name\":\"name\",\"description\": \"description\"}")
                 .with(csrf()))
                     .andExpect(status().isOk());
 
@@ -109,14 +117,5 @@ public class TaskControllerTestIT {
                     .andExpect(status().isOk());
 
         verify(taskService, times(1)).delete(anyLong());
-    }
-
-    private static String asJsonString(Object object){
-        try{
-            return new ObjectMapper().writeValueAsString(object);
-        }
-        catch (Exception e){
-            throw new RuntimeException();
-        }
     }
 }

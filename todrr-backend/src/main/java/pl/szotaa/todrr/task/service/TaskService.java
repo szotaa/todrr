@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.service;
 
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -33,7 +34,10 @@ public class TaskService {
 
     public List<Task> findAllByCurrentlyAuthenticatedUser(){
         User user = getOwnerFromSecurityContext();
-        return taskRepository.findAllByOwnerId(user.getId());
+        if(user != null){
+            return taskRepository.findAllByOwnerId(user.getId());
+        }
+        return Collections.emptyList();
     }
 
     public void update(Long id, Task updated){

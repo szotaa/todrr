@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import pl.szotaa.todrr.task.repository.TaskRepository;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyLong;
 import static org.mockito.Mockito.times;
@@ -68,6 +70,15 @@ public class TaskServiceTest {
 
         //then
         assertEquals(found, task);
+    }
+
+    @Test
+    public void findAllByCurrentlyAuthenticatedUser_unauthenticated_emptyListRetuned() {
+        //when
+        List<Task> tasks = taskService.findAllByCurrentlyAuthenticatedUser();
+
+        //then
+        assertTrue(tasks.isEmpty());
     }
 
     @Test
