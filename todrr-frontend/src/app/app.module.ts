@@ -8,13 +8,15 @@ import {AppRoutingModule} from './/app-routing.module';
 import {RegisterComponent} from './user/register/register.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

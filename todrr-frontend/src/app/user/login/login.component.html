@@ -1,0 +1,20 @@
+<main class="container">
+  <div class="justify-content-center">
+    <form #userForm = "ngForm" (ngSubmit) = "onSubmit(userForm.value)">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input id="email" type="email" class="form-control"
+               placeholder="example@email.com"
+               required
+               ngModel name="email"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" class="form-control" placeholder="********"
+               required
+               ngModel name="password"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</main>
