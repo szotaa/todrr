@@ -1,18 +1,26 @@
 <main class="container">
   <div class="justify-content-center">
-    <form>
+    <form #userForm = "ngForm" (ngSubmit) = "onSubmit(userForm.value)">
       <div class="form-group">
         <label for="email">Email address</label>
-        <input id="email" type="email" class="form-control" placeholder="example@email.com"/>
+        <input id="email" type="email" class="form-control"
+               placeholder="example@email.com"
+               required
+               ngModel name="email"/>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" type="email" class="form-control" placeholder="********" aria-describedby="passwordHint"/>
+        <input id="password" type="password" class="form-control" placeholder="********" aria-describedby="passwordHint"
+               required
+               ngModel name="password"/>
         <small id="passwordHint" class="form-text text-muted">Password must be at least 8 characters long.</small>
       </div>
       <div class="form-group">
         <label for="passwordRepeat">Repeat password</label>
-        <input id="passwordRepeat" type="email" class="form-control" placeholder="********"/>
+        <input id="passwordRepeat" type="password" class="form-control"
+               placeholder="********"
+               required
+               ngModel name="passwordRepeat"/>
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
