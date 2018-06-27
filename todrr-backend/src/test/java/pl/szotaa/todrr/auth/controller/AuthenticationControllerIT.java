@@ -43,8 +43,7 @@ public class AuthenticationControllerIT {
             .contentType(MediaType.APPLICATION_JSON)
             .content(userJson))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType("text/plain;charset=UTF-8"))
-                .andExpect(content().string("jwtToken"));
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
 
         verify(authenticationService, times(1)).getAuthenticatedJwtToken(any(User.class));
     }

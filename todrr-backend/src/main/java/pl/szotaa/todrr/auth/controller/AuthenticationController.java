@@ -1,5 +1,7 @@
 package pl.szotaa.todrr.auth.controller;
 
+import java.util.Collections;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +24,9 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/login")
-    public ResponseEntity<String> logIn(@RequestBody User user){
-        return ResponseEntity.ok(authenticationService.getAuthenticatedJwtToken(user));
+    @PostMapping(value = "/login")
+    public ResponseEntity<Map> logIn(@RequestBody User user){
+        String token = authenticationService.getAuthenticatedJwtToken(user);
+        return ResponseEntity.ok(Collections.singletonMap("jwtToken", token));
     }
 }
