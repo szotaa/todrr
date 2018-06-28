@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../core/model/user.model';
-import {UserService} from '../../core/service/user.service';
+import {RestService} from '../../core/service/rest.service';
 
 
 @Component({
@@ -10,24 +10,41 @@ import {UserService} from '../../core/service/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  private showSuccessMessage = false;
+  private showEmailTakenErrorMessage = false;
+  private showErrorMessage = false;
+
+  constructor(private restService: RestService) {
 
   }
 
   ngOnInit() {
   }
 
-  public onSubmit(user: User) {
-    user.passwordRepeat = null;
-    this.userService.post(
-      {
-        email: user.email,
-        password: user.password
-      }
-    ).subscribe(
-      (data: any) => {
-
-      }
+  public onSubmit(user: User): void {
+    this.restService.post('user', user).subscribe(
+      response => { this.handleSuccess(response); },
+      error => { this.handleError(error); }
     );
+  }
+
+  private handleError(error: Error): void {
+    this.clearMessages();
+    if (error['status'] === 409) {
+      this.showEmailTakenErrorMessage = true;
+    } else {
+      this.showErrorMessage = true;
+    }
+  }
+
+  private handleSuccess(success: any): void {
+    this.clearMessages();
+    this.showSuccessMessage = true;
+  }
+
+  private clearMessages(): void {
+    this.showSuccessMessage = false;
+    this.showEmailTakenErrorMessage = false;
+    this.showErrorMessage = false;
   }
 }

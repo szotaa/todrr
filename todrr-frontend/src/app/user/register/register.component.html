@@ -1,12 +1,24 @@
 <main class="container">
   <div class="justify-content-center">
+    <div id="errorMessages">
+      <div *ngIf="showEmailTakenErrorMessage" class="alert alert-danger text-center">
+        <strong>Email already taken!</strong>
+      </div>
+      <div *ngIf="showErrorMessage" class="alert alert-danger text-center">
+        <strong>Something went wrong! Try again in few seconds.</strong>
+      </div>
+      <div *ngIf="showSuccessMessage" class="alert alert-success text-center">
+        <strong>Registration completed! Check your inbox for verification email.</strong>
+      </div>
+    </div>
     <form #userForm = "ngForm" (ngSubmit) = "onSubmit(userForm.value)">
       <div class="form-group">
         <label for="email">Email address</label>
         <input id="email" type="email" class="form-control"
-               placeholder="example@email.com"
+               placeholder="example@email.com"  aria-describedby="emailHint"
                required
                ngModel name="email"/>
+        <small id="emailHint" class="form-text text-muted">Email will be used for account activation.</small>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
