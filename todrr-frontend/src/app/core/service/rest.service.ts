@@ -18,6 +18,10 @@ export class RestService {
     return this.http.get<T>(this.apiUrl + resourceUrl + '/' + resourceId);
   }
 
+  public getAll<T>(resourceUrl: string): Observable<T> {
+    return this.http.get<T>(this.apiUrl + resourceUrl);
+  }
+
   public post<T>(resourceUrl: string, payload: T): Observable<T> {
     return this.http.post<T>(this.apiUrl + resourceUrl, payload);
   }

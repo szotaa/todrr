@@ -1,0 +1,17 @@
+<div class="justify-content-center">
+  <form #taskForm = "ngForm" (ngSubmit) = "onSubmit(taskForm.value)">
+    <div class="form-group">
+      <label for="name">Task name</label>
+      <input id="name" type="text" class="form-control"
+             placeholder="e.g. 'Do homework', 'Walk the dog'" required
+             ngModel name="name"/>
+    </div>
+    <div class="form-group">
+      <label for="description">Task description</label>
+      <input id="description" type="text" class="form-control"
+             placeholder="e.g. 'Mathematics, pages 165 - 170'" required
+             ngModel name="description"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
