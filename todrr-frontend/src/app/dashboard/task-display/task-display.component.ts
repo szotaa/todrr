@@ -18,7 +18,8 @@ export class TaskDisplayComponent implements OnInit {
     console.log('size:' + this.tasks.length)
   }
 
-  private updateTasksArray(): void{
+  private updateTasksArray(): void {
+    this.tasks = [];
     this.restService.getAll<Task[]>('task').subscribe(
       response => {
         this.tasks = response;

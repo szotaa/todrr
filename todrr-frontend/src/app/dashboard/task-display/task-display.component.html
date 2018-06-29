@@ -1,4 +1,6 @@
 <div class="justify-content-center">
+  <h2 class="text-center">Upcoming tasks</h2>
+  <hr class="col-xs-12">
   <table class="table table-striped" *ngIf="tasks.length != 0">
     <thead class="thead-light">
       <tr>
@@ -8,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks; let i = index">
+      <tr *ngFor="let task of tasks; let i = index;">
         <th scope="row">{{ i }}</th>
         <td>{{ task.name }}</td>
         <td> {{ task.description }} </td>

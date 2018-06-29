@@ -1,4 +1,9 @@
 <div class="justify-content-center">
+  <h2 class="text-center">Add new task</h2>
+  <hr class="col-xs-12">
+  <div *ngIf="showErrorMessage" class="alert alert-danger text-center">
+    Something went wrong!
+  </div>
   <form #taskForm = "ngForm" (ngSubmit) = "onSubmit(taskForm.value)">
     <div class="form-group">
       <label for="name">Task name</label>

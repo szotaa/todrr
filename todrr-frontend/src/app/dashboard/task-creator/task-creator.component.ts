@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../core/service/rest.service';
-import { Task } from "../../core/model/task.model";
+import {Task} from "../../core/model/task.model";
 
 
 @Component({
@@ -10,7 +10,11 @@ import { Task } from "../../core/model/task.model";
 })
 export class TaskCreatorComponent implements OnInit {
 
-  constructor(private restService: RestService) { }
+  private showErrorMessage = false;
+
+  constructor(
+    private restService: RestService,
+  ) { }
 
   ngOnInit() {
   }
@@ -18,8 +22,13 @@ export class TaskCreatorComponent implements OnInit {
 
   public onSubmit(task: Task): void {
     this.restService.post<Task>('task', task).subscribe(
-      response => {},
-      error => {}
+      response => {
+        this.showErrorMessage = false;
+        window.location.reload()
+      },
+      error => {
+        this.showErrorMessage = true;
+      }
     )
   }
 }
