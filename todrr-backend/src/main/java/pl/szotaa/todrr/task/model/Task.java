@@ -1,5 +1,6 @@
 package pl.szotaa.todrr.task.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.Entity;
@@ -40,6 +41,7 @@ public class Task implements Serializable {
     private String description;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "owner_id")
     private User owner;
 
