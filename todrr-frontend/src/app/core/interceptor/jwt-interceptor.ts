@@ -7,7 +7,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const jwtToken = localStorage.getItem('jwtToken');
-    console.log('interceptiong request');
     if (jwtToken) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + jwtToken)

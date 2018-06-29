@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from "../../core/service/rest.service";
-import {Task} from "../../core/model/task.model";
+import {RestService} from '../../core/service/rest.service';
+import {Task} from '../../core/model/task.model';
 
 @Component({
   selector: 'app-task-display',
@@ -9,13 +9,12 @@ import {Task} from "../../core/model/task.model";
 })
 export class TaskDisplayComponent implements OnInit {
 
-  private tasks : Task[] = [];
+  private tasks: Task[] = [];
 
   constructor(private restService: RestService) { }
 
   ngOnInit() {
     this.updateTasksArray();
-    console.log('size:' + this.tasks.length)
   }
 
   private updateTasksArray(): void {
@@ -23,7 +22,6 @@ export class TaskDisplayComponent implements OnInit {
     this.restService.getAll<Task[]>('task').subscribe(
       response => {
         this.tasks = response;
-        console.log('TASKS: ' + this.tasks.length);
       }
     );
   }

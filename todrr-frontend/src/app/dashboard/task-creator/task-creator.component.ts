@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../core/service/rest.service';
-import {Task} from "../../core/model/task.model";
+import {Task} from '../../core/model/task.model';
 
 
 @Component({
@@ -24,11 +24,11 @@ export class TaskCreatorComponent implements OnInit {
     this.restService.post<Task>('task', task).subscribe(
       response => {
         this.showErrorMessage = false;
-        window.location.reload()
+        window.location.reload();
       },
       error => {
         this.showErrorMessage = true;
       }
-    )
+    );
   }
 }
