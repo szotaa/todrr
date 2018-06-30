@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {DOCUMENT} from "@angular/common";
-import {Breadcrumb} from "../../core/model/breadcrumb.model";
-import {AuthService} from "../../core/service/auth.service";
+import {DOCUMENT} from '@angular/common';
+import {Breadcrumb} from '../../core/model/breadcrumb.model';
+import {AuthService} from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.breadcrumbs.push({path: "/", name: "Home"});
+    this.breadcrumbs.push({path: '/', name: 'Home'});
     this.breadcrumbs.push({path: location.pathname, name: this.formatPath(location.pathname)});
   }
 
