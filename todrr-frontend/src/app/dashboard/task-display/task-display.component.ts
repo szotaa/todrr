@@ -9,7 +9,7 @@ import {Task} from '../../core/model/task.model';
 })
 export class TaskDisplayComponent implements OnInit {
 
-  private tasks: Task[] = [];
+  public tasks: Task[] = [];
 
   constructor(private restService: RestService) { }
 

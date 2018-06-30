@@ -10,9 +10,9 @@ import {RestService} from '../../core/service/rest.service';
 })
 export class RegisterComponent implements OnInit {
 
-  private showSuccessMessage = false;
-  private showEmailTakenErrorMessage = false;
-  private showErrorMessage = false;
+  public showSuccessMessage = false;
+  public showEmailTakenErrorMessage = false;
+  public showErrorMessage = false;
 
   constructor(private restService: RestService) {
 

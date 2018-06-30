@@ -10,11 +10,11 @@ import {AuthService} from '../../core/service/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  private breadcrumbs: Breadcrumb[] = [];
+  public breadcrumbs: Breadcrumb[] = [];
 
   constructor(
     @Inject(DOCUMENT) private document: any,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

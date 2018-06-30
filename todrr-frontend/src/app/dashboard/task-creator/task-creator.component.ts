@@ -10,7 +10,7 @@ import {Task} from '../../core/model/task.model';
 })
 export class TaskCreatorComponent implements OnInit {
 
-  private showErrorMessage = false;
+  public showErrorMessage = false;
 
   constructor(
     private restService: RestService,

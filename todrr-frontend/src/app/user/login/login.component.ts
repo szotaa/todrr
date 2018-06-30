@@ -10,7 +10,7 @@ import { RestService } from '../../core/service/rest.service';
 })
 export class LoginComponent implements OnInit {
 
-  private showErrorMessage = false;
+  public showErrorMessage = false;
 
   constructor(
     private authService: AuthService,
