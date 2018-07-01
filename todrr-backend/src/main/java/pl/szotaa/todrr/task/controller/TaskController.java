@@ -42,17 +42,20 @@ public class TaskController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Task>> getAllAccessibleTasks() {
         List<Task> tasks = taskService.findAllByCurrentlyAuthenticatedUser();
         return ResponseEntity.ok(tasks);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("@taskMethodSecurityExpressions.isOwner(#id, authentication) or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Task> findById(@PathVariable long id) throws TaskNotFoundException {
         return ResponseEntity.ok(taskService.findById(id));
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("@taskMethodSecurityExpressions.isOwner(#id, authentication) or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> update(@PathVariable long id, @RequestBody Task task){
         task.setId(id);
         taskService.update(id, task);
@@ -60,6 +63,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("@taskMethodSecurityExpressions.isOwner(#id, authentication) or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable long id){
         taskService.delete(id);
         return ResponseEntity.ok().build();
