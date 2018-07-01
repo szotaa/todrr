@@ -17,6 +17,12 @@ export class TaskDisplayComponent implements OnInit {
     this.updateTasksArray();
   }
 
+  public delete(index: number): void {
+    this.restService.delete('task', index).subscribe(
+      response => {this.updateTasksArray();}
+    );
+  }
+
   private updateTasksArray(): void {
     this.tasks = [];
     this.restService.getAll<Task[]>('task').subscribe(
