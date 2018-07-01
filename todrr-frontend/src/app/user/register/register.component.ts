@@ -13,19 +13,21 @@ export class RegisterComponent implements OnInit {
   public showSuccessMessage = false;
   public showEmailTakenErrorMessage = false;
   public showErrorMessage = false;
+  public showPasswordsDoNotMatch = false;
 
-  constructor(private restService: RestService) {
+  constructor(private restService: RestService) {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public onSubmit(user: User): void {
-    this.restService.post('user', user).subscribe(
-      response => { this.handleSuccess(response); },
-      error => { this.handleError(error); }
-    );
+    if (this.arePasswordsMatching(user.password, user.passwordRepeat)) {
+      this.restService.post('user', user).subscribe(
+        response => { this.handleSuccess(response); },
+        error => { this.handleError(error); }
+      );
+    } else {
+      this.showPasswordsDoNotMatch = true;
+    }
   }
 
   private handleError(error: Error): void {
@@ -46,5 +48,13 @@ export class RegisterComponent implements OnInit {
     this.showSuccessMessage = false;
     this.showEmailTakenErrorMessage = false;
     this.showErrorMessage = false;
+    this.showPasswordsDoNotMatch = false;
+  }
+
+  private arePasswordsMatching(password: string, repeatedPassword: string): boolean {
+    if(password === repeatedPassword){
+      return true;
+    }
+    return false;
   }
 }
