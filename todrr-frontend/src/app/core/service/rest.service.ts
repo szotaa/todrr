@@ -29,4 +29,8 @@ export class RestService {
   public delete<T>(resourceUrl: string, resourceId: any): Observable<T> {
     return this.http.delete<T>(this.apiUrl + resourceUrl + '/' + resourceId);
   }
+
+  public put<T>(resourceUrl: string, resourceId: any, payload: T): Observable<T> {
+    return this.http.put<T>(this.apiUrl + resourceUrl + '/' + resourceId, payload);
+  }
 }

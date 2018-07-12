@@ -14,6 +14,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {TaskDisplayComponent} from './dashboard/task-display/task-display.component';
 import {TaskCreatorComponent} from './dashboard/task-creator/task-creator.component';
 import {JwtInterceptor} from './core/interceptor/jwt-interceptor';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {JwtInterceptor} from './core/interceptor/jwt-interceptor';
     HomeComponent,
     DashboardComponent,
     TaskDisplayComponent,
-    TaskCreatorComponent
+    TaskCreatorComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
