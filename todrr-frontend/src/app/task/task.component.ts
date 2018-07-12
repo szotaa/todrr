@@ -25,19 +25,19 @@ export class TaskComponent implements OnInit {
   }
 
   public fetchTask(): void {
-    this.restService.getOne('task', this.pathId).subscribe(
+    this.restService.getOne<Task>('task', this.pathId).subscribe(
       x => this.task = x
     );
   }
 
   public update(task: Task): void {
-    this.restService.put('task', this.pathId, task).subscribe(
+    this.restService.put<Task>('task', this.pathId, task).subscribe(
       x => this.fetchTask()
     );
   }
 
   public delete(index: number): void {
-    this.restService.delete('task', index).subscribe(
+    this.restService.delete<Task>('task', index).subscribe(
       x => { this.router.navigate(['/tasks']); }
     );
   }
