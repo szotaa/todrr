@@ -41,14 +41,23 @@ account, and add tasks with customizable names and descriptions. After finishing
 
  - JWT tokens authorization
  
- 
 ### other:
 
  - SonarCloud
  - JavaDocs
+ 
+## useful links:
 
 heroku link:
 https://todrr.herokuapp.com/
 
+javadocs:
+https://szotaa.github.io/todrr/
+
 trello task board:
 https://trello.com/b/kBSRTnpv/todrr
+
+## disclaimer
+
+I know there is still a lot to do, but since this app was a tryout for many 
+concepts (CI, deployment, Angular - Spring integration) I consider it done.
