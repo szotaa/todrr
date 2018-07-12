@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Task} from "../core/model/task.model";
-import {RestService} from "../core/service/rest.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Task} from '../core/model/task.model';
+import {RestService} from '../core/service/rest.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -27,18 +27,18 @@ export class TaskComponent implements OnInit {
   public fetchTask(): void {
     this.restService.getOne('task', this.pathId).subscribe(
       x => this.task = x
-    )
+    );
   }
 
   public update(task: Task): void {
     this.restService.put('task', this.pathId, task).subscribe(
       x => this.fetchTask()
-    )
+    );
   }
 
   public delete(index: number): void {
     this.restService.delete('task', index).subscribe(
-      x => {this.router.navigate(['/tasks']);}
+      x => { this.router.navigate(['/tasks']); }
     );
   }
 }

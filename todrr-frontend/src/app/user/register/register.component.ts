@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private arePasswordsMatching(password: string, repeatedPassword: string): boolean {
-    if(password === repeatedPassword){
+    if (password === repeatedPassword) {
       return true;
     }
     return false;

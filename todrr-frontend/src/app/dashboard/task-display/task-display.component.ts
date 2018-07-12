@@ -19,7 +19,7 @@ export class TaskDisplayComponent implements OnInit {
 
   public delete(index: number): void {
     this.restService.delete('task', index).subscribe(
-      response => {this.updateTasksArray();}
+      response => { this.updateTasksArray(); }
     );
   }
 
